@@ -180,6 +180,77 @@
             background: #4338ca;
         }
         
+        /* 日期選擇按鈕 */
+        .date-selector {
+            margin-top: 12px;
+            padding: 10px;
+            background: #f9fafb;
+            border-radius: 8px;
+        }
+        
+        .date-selector-label {
+            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .date-options {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .date-option {
+            flex: 1;
+            min-width: 60px;
+            padding: 8px 6px;
+            font-size: 11px;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            background: white;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        
+        .date-option:hover:not(.disabled) {
+            border-color: #4f46e5;
+            background: #eef2ff;
+        }
+        
+        .date-option.selected {
+            background: #4f46e5;
+            color: white;
+            border-color: #4f46e5;
+            font-weight: 600;
+        }
+        
+        .date-option.disabled {
+            background: #f3f4f6;
+            color: #9ca3af;
+            border-color: #e5e7eb;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        
+        .date-option.conflict {
+            background: #fef2f2;
+            color: #dc2626;
+            border-color: #fca5a5;
+        }
+        
+        .date-option-date {
+            display: block;
+            font-weight: 600;
+        }
+        
+        .date-option-label {
+            display: block;
+            font-size: 10px;
+            margin-top: 2px;
+        }
+        
         .results {
             padding: 20px;
         }
@@ -316,6 +387,263 @@
         .notes li strong {
             color: #92400e;
         }
+        
+        /* 手機版面優化 */
+        @media (max-width: 768px) {
+            body {
+                font-size: 14px;
+            }
+            
+            .container {
+                padding: 10px;
+                max-width: 100%;
+            }
+            
+            .header {
+                padding: 18px 12px;
+                position: relative;
+            }
+            
+            .header h1 {
+                font-size: 18px;
+                margin-bottom: 6px;
+                padding-right: 70px; /* 给清空按钮留空间 */
+            }
+            
+            .header .subtitle {
+                font-size: 11px;
+                line-height: 1.4;
+            }
+            
+            .clear-btn {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                padding: 6px 10px;
+                font-size: 11px;
+            }
+            
+            .form-group {
+                margin-bottom: 16px;
+            }
+            
+            .form-group label {
+                font-size: 13px;
+                margin-bottom: 6px;
+                display: block;
+            }
+            
+            .form-group select,
+            .form-group input[type="date"] {
+                font-size: 14px;
+                padding: 12px;
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            /* 按鈕組 - 垂直排列 */
+            .btn-group {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                margin-top: 12px;
+            }
+            
+            .btn-group button {
+                width: 100%;
+                font-size: 13px;
+                padding: 12px 16px;
+                white-space: normal;
+                text-align: center;
+                line-height: 1.4;
+                min-height: 48px; /* 增加最小高度，更容易點擊 */
+                word-wrap: break-word;
+                box-sizing: border-box;
+            }
+            
+            /* 建議框優化 */
+            .suggestion-box {
+                padding: 12px;
+                font-size: 12px;
+                margin-top: 12px;
+                word-wrap: break-word;
+                overflow-wrap: break-word;
+            }
+            
+            .suggestion-label {
+                font-size: 13px;
+                margin-bottom: 8px;
+                font-weight: 600;
+            }
+            
+            .suggestion-value {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+            
+            .v1a-label {
+                font-size: 13px;
+                margin-bottom: 8px;
+                display: block;
+                font-weight: 600;
+            }
+            
+            /* V1a 輸入框優化 */
+            #v1aInput {
+                font-size: 14px !important;
+                padding: 12px !important;
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+            
+            /* 訪視卡片優化 */
+            .visit-card {
+                padding: 14px;
+                margin-bottom: 12px;
+            }
+            
+            .visit-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            
+            .visit-name {
+                font-size: 15px;
+            }
+            
+            .visit-date {
+                font-size: 18px;
+                margin: 10px 0;
+            }
+            
+            .visit-info {
+                font-size: 12px;
+                line-height: 1.6;
+            }
+            
+            .badge {
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+            
+            /* 警告訊息優化 */
+            .warning {
+                font-size: 12px;
+                padding: 10px 12px;
+                margin-top: 8px;
+                line-height: 1.5;
+            }
+            
+            .validation-msg {
+                font-size: 12px;
+                padding: 10px 12px;
+                line-height: 1.5;
+            }
+            
+            /* 使用說明優化 */
+            .notes {
+                padding: 14px;
+                margin-top: 16px;
+            }
+            
+            .notes-title {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+            
+            .notes ul {
+                font-size: 12px;
+                margin-left: 20px;
+                line-height: 1.8;
+            }
+            
+            .notes li {
+                margin-bottom: 8px;
+            }
+            
+            .empty {
+                font-size: 13px;
+                padding: 30px 16px;
+            }
+            
+            /* 日期選擇器手機優化 */
+            .date-selector {
+                padding: 8px;
+            }
+            
+            .date-selector-label {
+                font-size: 11px;
+            }
+            
+            .date-options {
+                flex-direction: column;
+                gap: 8px;
+            }
+            
+            .date-option {
+                min-width: 100%;
+                padding: 10px 8px;
+                font-size: 12px;
+            }
+            
+            .date-option-date {
+                font-size: 13px;
+            }
+            
+            .date-option-label {
+                font-size: 10px;
+            }
+            
+            /* 智能助手按鈕手機優化 */
+            button[onclick="autoAvoidHolidays()"] {
+                width: 90% !important;
+                padding: 14px 20px !important;
+                font-size: 15px !important;
+            }
+            
+            /* 確保所有 inline style 的元素也響應 */
+            div[style*="display: flex"] {
+                flex-wrap: wrap;
+            }
+        }
+        
+        /* 超小屏幕優化 (iPhone SE 等) */
+        @media (max-width: 375px) {
+            .container {
+                padding: 8px;
+            }
+            
+            .header h1 {
+                font-size: 16px;
+            }
+            
+            .form-group select,
+            .form-group input[type="date"] {
+                font-size: 13px;
+                padding: 10px;
+            }
+            
+            .btn-group button {
+                font-size: 12px;
+                padding: 10px 14px;
+                min-height: 44px;
+            }
+            
+            .suggestion-box {
+                padding: 10px;
+                font-size: 11px;
+            }
+            
+            .visit-card {
+                padding: 12px;
+            }
+            
+            .date-option {
+                padding: 8px 6px;
+                font-size: 11px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -390,13 +718,32 @@
                     </ul>
                 </li>
                 <li><strong>Naive:</strong> V1 到 V2 需要 1-35 天，V1 和 V1a 通常同一天</li>
-                <li><strong>Washout:</strong> V1 到 V1a 必須等於洗除期，V1a 到 V2 需 1-7 天</li>
+                <li><strong>Washout:</strong> V1 到 V2 最多 35 天，V1 到 V1a 至少 = 最小洗除期，V1a 到 V2 需 1-7 天</li>
                 <li>⚠️ <strong>即時提醒：</strong>輸入日期後立即檢查週末和台灣國定假日（2025-2027）</li>
+                <li>🎯 <strong>智能建議：</strong>系統自動提供「避開假日」按鈕，快速選擇工作日</li>
             </ul>
         </div>
     </div>
     
     <script>
+        // Working weekends (補班日 - weekends that are working days)
+        var workingWeekends = {
+            '2025': [
+                '01-04', // 補 1/28 (春節調整)
+                '02-08'  // 補 2/3 (春節調整)
+            ],
+            '2026': [
+                '01-03', // 補 2/16 (春節調整)
+                '02-14', // 補 2/21 (春節調整)
+                '06-27', // 補 6/20 (端午節調整)
+                '10-03'  // 補 10/9 (國慶日調整)
+            ],
+            '2027': [
+                '01-23', // 補 1/29 (春節調整)
+                '02-27'  // 補 3/1 (和平紀念日調整)
+            ]
+        };
+        
         var holidays = {
             '2025': {
                 '01-01': '元旦',
@@ -437,6 +784,344 @@
         };
         
         var visit1aDate = '';
+        var selectedV3 = null; // User selected Visit 3 date
+        var selectedV4 = null; // User selected Visit 4 date
+        var selectedV5 = null; // User selected Visit 5 date
+        
+        // Select a visit date (V3, V4, or V5)
+        function selectVisitDate(visitNum, dateStr) {
+            if (visitNum === 3) selectedV3 = dateStr;
+            else if (visitNum === 4) selectedV4 = dateStr;
+            else if (visitNum === 5) selectedV5 = dateStr;
+            
+            calculateVisits(); // Recalculate to update UI
+        }
+        
+        // Check if a date conflicts with other visits
+        function checkDateConflict(dateStr, excludeVisit, allVisits) {
+            var date = parseDate(dateStr);
+            
+            for (var i = 0; i < allVisits.length; i++) {
+                var visit = allVisits[i];
+                if (visit.name === excludeVisit) continue; // Skip the visit being checked
+                
+                if (visit.date && formatDate(parseDate(visit.date)) === dateStr) {
+                    return visit.name; // Return conflicting visit name
+                }
+            }
+            
+            return null; // No conflict
+        }
+        
+        // Generate date selector buttons for a visit
+        function generateDateSelector(visitNum, centerDate, v2, allVisits) {
+            var visitName = 'Visit ' + visitNum;
+            var selectedDate = null;
+            if (visitNum === 3) selectedDate = selectedV3;
+            else if (visitNum === 4) selectedDate = selectedV4;
+            else if (visitNum === 5) selectedDate = selectedV5;
+            
+            // If no selection, use center date (or next workday if center is holiday)
+            if (!selectedDate) {
+                var suggestedDate = centerDate;
+                // If suggested date is holiday, find next workday
+                if (checkHoliday(centerDate)) {
+                    suggestedDate = getNextWorkday(centerDate);
+                }
+                selectedDate = formatDate(suggestedDate);
+                // Auto-select suggested date on first render
+                if (visitNum === 3) selectedV3 = selectedDate;
+                else if (visitNum === 4) selectedV4 = selectedDate;
+                else if (visitNum === 5) selectedV5 = selectedDate;
+            }
+            
+            var html = '<div class="date-selector">';
+            html += '<div class="date-selector-label">選擇訪視日期（±2 天彈性窗口）</div>';
+            html += '<div class="date-options">';
+            
+            // Track if all options are disabled
+            var allDisabled = true;
+            var optionsHtml = '';
+            
+            // Generate 5 options: -2, -1, 0, +1, +2
+            for (var i = -2; i <= 2; i++) {
+                var optionDate = addDays(centerDate, i);
+                var optionDateStr = formatDate(optionDate);
+                var isSelected = (optionDateStr === selectedDate);
+                var conflict = checkDateConflict(optionDateStr, visitName, allVisits);
+                var holiday = checkHoliday(optionDate);
+                
+                var btnClass = 'date-option';
+                var isDisabled = false;
+                
+                if (isSelected) {
+                    btnClass += ' selected';
+                }
+                
+                // Holidays and conflicts are both disabled
+                if (conflict || holiday) {
+                    btnClass += ' disabled';
+                    isDisabled = true;
+                    if (conflict) btnClass += ' conflict';
+                } else {
+                    allDisabled = false; // Found at least one enabled option
+                }
+                
+                var label = '';
+                if (i === -2) label = '往前2天';
+                else if (i === -1) label = '往前1天';
+                else if (i === 0) label = '建議';
+                else if (i === 1) label = '往後1天';
+                else if (i === 2) label = '往後2天';
+                
+                optionsHtml += '<button class="' + btnClass + '"';
+                if (!isDisabled) {
+                    optionsHtml += ' onclick="selectVisitDate(' + visitNum + ', \'' + optionDateStr + '\')"';
+                }
+                optionsHtml += '>';
+                optionsHtml += '<span class="date-option-date">' + formatDateShort(optionDate) + '</span>';
+                optionsHtml += '<span class="date-option-label">' + label + '</span>';
+                
+                if (conflict) {
+                    optionsHtml += '<span class="date-option-label" style="color: #dc2626;">⚠️ 衝突</span>';
+                } else if (holiday) {
+                    optionsHtml += '<span class="date-option-label" style="color: #dc2626;">🚫 假日</span>';
+                }
+                optionsHtml += '</button>';
+            }
+            
+            html += optionsHtml;
+            html += '</div>';
+            
+            // If all options are disabled, suggest adjusting V2 or V1
+            if (allDisabled) {
+                var v1Input = document.getElementById('visit1').value;
+                var v2Input = document.getElementById('visit2').value;
+                var v1Date = parseDate(v1Input);
+                var v2Date = parseDate(v2Input);
+                
+                // Find a better V2 date
+                var suggestedV2 = findBetterV2Date(v2Date, visitNum);
+                
+                html += '<div style="margin-top: 12px; padding: 12px; background: #fef2f2; border: 2px solid #fca5a5; border-radius: 8px;">';
+                html += '<div style="font-weight: 600; font-size: 13px; color: #dc2626; margin-bottom: 6px;">⚠️ 所有日期都無法選擇</div>';
+                
+                if (suggestedV2) {
+                    html += '<div style="font-size: 12px; color: #991b1b; margin-bottom: 10px;">建議調整 Visit 2 日期以獲得可用選項</div>';
+                    html += '<div style="background: white; padding: 10px; border-radius: 6px; margin-bottom: 8px;">';
+                    html += '<div style="font-size: 12px; color: #92400e; margin-bottom: 6px;">💡 系統建議：</div>';
+                    html += '<div style="font-size: 13px; font-weight: 600; color: #1f2937;">將 Visit 2 改為：<span style="color: #dc2626;">' + formatDate(suggestedV2) + '</span></div>';
+                    html += '<button class="btn btn-primary" style="width: 100%; margin-top: 8px; background: #dc2626;" onclick="adjustV2Date(\'' + formatDate(suggestedV2) + '\')">';
+                    html += '✨ 採用建議並重新計算';
+                    html += '</button>';
+                    html += '</div>';
+                } else {
+                    // If no suitable V2 adjustment found, suggest moving to nearest workday
+                    var nearestV1 = findNearestWorkday(v1Date);
+                    var nearestV2 = findNearestWorkday(v2Date);
+                    
+                    html += '<div style="font-size: 12px; color: #991b1b; margin-bottom: 10px;">在 ±10 天範圍內找不到合適的 V2 調整</div>';
+                    html += '<div style="background: white; padding: 10px; border-radius: 6px; margin-bottom: 8px;">';
+                    html += '<div style="font-size: 12px; color: #92400e; margin-bottom: 8px;">💡 建議調整到最近的工作日：</div>';
+                    
+                    // Suggest V1
+                    if (nearestV1 && formatDate(nearestV1) !== formatDate(v1Date)) {
+                        html += '<div style="margin-bottom: 8px;">';
+                        html += '<div style="font-size: 12px; font-weight: 600; color: #1f2937; margin-bottom: 4px;">方案 A：調整 Visit 1</div>';
+                        html += '<div style="font-size: 13px; color: #1f2937;">從 ' + formatDate(v1Date) + ' → <span style="color: #dc2626; font-weight: 600;">' + formatDate(nearestV1) + '</span></div>';
+                        html += '<button class="btn btn-primary" style="width: 100%; margin-top: 6px; background: #dc2626; font-size: 12px;" onclick="adjustV1Date(\'' + formatDate(nearestV1) + '\')">';
+                        html += '採用方案 A';
+                        html += '</button>';
+                        html += '</div>';
+                    }
+                    
+                    // Suggest V2
+                    if (nearestV2 && formatDate(nearestV2) !== formatDate(v2Date)) {
+                        html += '<div style="margin-bottom: 8px;">';
+                        html += '<div style="font-size: 12px; font-weight: 600; color: #1f2937; margin-bottom: 4px;">方案 B：調整 Visit 2</div>';
+                        html += '<div style="font-size: 13px; color: #1f2937;">從 ' + formatDate(v2Date) + ' → <span style="color: #dc2626; font-weight: 600;">' + formatDate(nearestV2) + '</span></div>';
+                        html += '<button class="btn btn-primary" style="width: 100%; margin-top: 6px; background: #dc2626; font-size: 12px;" onclick="adjustV2Date(\'' + formatDate(nearestV2) + '\')">';
+                        html += '採用方案 B';
+                        html += '</button>';
+                        html += '</div>';
+                    }
+                    
+                    if ((!nearestV1 || formatDate(nearestV1) === formatDate(v1Date)) && 
+                        (!nearestV2 || formatDate(nearestV2) === formatDate(v2Date))) {
+                        html += '<div style="font-size: 12px; color: #991b1b;">V1 和 V2 已經是最近的工作日，建議重新規劃整體排程</div>';
+                    }
+                    
+                    html += '</div>';
+                }
+                
+                html += '</div>';
+            }
+            
+            html += '</div>';
+            
+            return html;
+        }
+        
+        // Find nearest workday from a given date (forward search)
+        function findNearestWorkday(date) {
+            var maxSearch = 30; // Search up to 30 days
+            var testDate = new Date(date);
+            
+            for (var i = 0; i < maxSearch; i++) {
+                if (i > 0) {
+                    testDate = addDays(testDate, 1);
+                }
+                if (!checkHoliday(testDate)) {
+                    return testDate;
+                }
+            }
+            
+            return null; // Could not find workday
+        }
+        
+        // Find a better V2 date that allows valid options for this visit
+        function findBetterV2Date(currentV2, visitNum) {
+            var daysOffset;
+            if (visitNum === 3) daysOffset = 7;
+            else if (visitNum === 4) daysOffset = 14;
+            else if (visitNum === 5) daysOffset = 28;
+            
+            // Try adjusting V2 forward and backward
+            var maxAdjust = 10; // Try up to 10 days adjustment
+            
+            for (var adjust = 1; adjust <= maxAdjust; adjust++) {
+                // Try moving V2 forward
+                var newV2Forward = addDays(currentV2, adjust);
+                // CRITICAL: V2 itself must be a workday
+                if (!checkHoliday(newV2Forward) && hasValidOptions(newV2Forward, daysOffset)) {
+                    return newV2Forward;
+                }
+                
+                // Try moving V2 backward
+                var newV2Backward = addDays(currentV2, -adjust);
+                // CRITICAL: V2 itself must be a workday
+                if (!checkHoliday(newV2Backward) && hasValidOptions(newV2Backward, daysOffset)) {
+                    return newV2Backward;
+                }
+            }
+            
+            return null; // Could not find better date within range
+        }
+        
+        // Check if a V2 date would give valid options for a visit
+        function hasValidOptions(v2Date, daysOffset) {
+            var centerDate = addDays(v2Date, daysOffset);
+            
+            // Check if any date in the ±2 range is valid (not holiday)
+            for (var i = -2; i <= 2; i++) {
+                var testDate = addDays(centerDate, i);
+                if (!checkHoliday(testDate)) {
+                    return true; // Found at least one non-holiday
+                }
+            }
+            
+            return false; // All dates are holidays
+        }
+        
+        // Adjust V1 date and recalculate
+        function adjustV1Date(newV1) {
+            document.getElementById('visit1').value = newV1;
+            
+            // Clear previous selections
+            visit1aDate = '';
+            selectedV3 = null;
+            selectedV4 = null;
+            selectedV5 = null;
+            
+            // Recalculate
+            checkDateWarning('visit1');
+            calculateV2Suggestion();
+            document.getElementById('v1aSuggestion').innerHTML = '';
+            document.getElementById('validation').innerHTML = '';
+            calculateVisits();
+        }
+        
+        // Adjust V2 date and recalculate
+        function adjustV2Date(newV2) {
+            document.getElementById('visit2').value = newV2;
+            
+            // Clear previous selections
+            selectedV3 = null;
+            selectedV4 = null;
+            selectedV5 = null;
+            
+            // Recalculate
+            checkDateWarning('visit2');
+            calculateV2Suggestion();
+            validateV1a();
+            calculateVisits();
+        }
+        
+        // Format date in short form (MM/DD)
+        function formatDateShort(date) {
+            var month = String(date.getMonth() + 1).padStart(2, '0');
+            var day = String(date.getDate()).padStart(2, '0');
+            return month + '/' + day;
+        }
+        
+        // Auto-adjust all visits to avoid holidays (one-click)
+        function autoAvoidHolidays() {
+            var v2Input = document.getElementById('visit2').value;
+            if (!v2Input) {
+                alert('請先輸入 Visit 2 日期');
+                return;
+            }
+            
+            var v2 = parseDate(v2Input);
+            var changed = false;
+            
+            // Visit 3: Day 8 (V2 + 7)
+            var v3_center = addDays(v2, 7);
+            if (checkHoliday(v3_center)) {
+                var v3_workday = getNextWorkday(v3_center);
+                // Make sure still in range (V2+5 to V2+9)
+                if (v3_workday <= addDays(v2, 9)) {
+                    selectedV3 = formatDate(v3_workday);
+                    changed = true;
+                }
+            } else {
+                selectedV3 = formatDate(v3_center);
+            }
+            
+            // Visit 4: Day 15 (V2 + 14)
+            var v4_center = addDays(v2, 14);
+            if (checkHoliday(v4_center)) {
+                var v4_workday = getNextWorkday(v4_center);
+                // Make sure still in range (V2+12 to V2+16)
+                if (v4_workday <= addDays(v2, 16)) {
+                    selectedV4 = formatDate(v4_workday);
+                    changed = true;
+                }
+            } else {
+                selectedV4 = formatDate(v4_center);
+            }
+            
+            // Visit 5: Day 29 (V2 + 28)
+            var v5_center = addDays(v2, 28);
+            if (checkHoliday(v5_center)) {
+                var v5_workday = getNextWorkday(v5_center);
+                // Make sure still in range (V2+26 to V2+30)
+                if (v5_workday <= addDays(v2, 30)) {
+                    selectedV5 = formatDate(v5_workday);
+                    changed = true;
+                }
+            } else {
+                selectedV5 = formatDate(v5_center);
+            }
+            
+            calculateVisits(); // Recalculate to update UI
+            
+            if (changed) {
+                alert('✅ 已自動調整 Visit 日期避開假日');
+            } else {
+                alert('✅ 所有 Visit 日期已是工作日');
+            }
+        }
         
         function clearAll() {
             // Clear all form inputs
@@ -447,6 +1132,11 @@
             
             // Clear V1a date
             visit1aDate = '';
+            
+            // Clear selected visit dates
+            selectedV3 = null;
+            selectedV4 = null;
+            selectedV5 = null;
             
             // Hide drug type selection
             document.getElementById('drugTypeGroup').style.display = 'none';
@@ -538,11 +1228,21 @@
                 var v2_max = addDays(v1, 35);
                 var v2_suggested = v2_min; // Use minimum (shortest time)
                 
+                // Check if suggested date is holiday/weekend
+                var v2_workday = v2_suggested;
+                var isHoliday = checkHoliday(v2_suggested);
+                if (isHoliday) {
+                    v2_workday = getNextWorkday(v2_suggested);
+                }
+                
                 html = '<div style="margin-top: 12px; padding: 12px; background: #eff6ff; border: 2px solid #bfdbfe; border-radius: 8px;">';
                 html += '<div style="font-weight: 600; font-size: 13px; color: #1e40af; margin-bottom: 6px;">Visit 2 建議</div>';
                 html += '<div style="font-size: 12px; color: #3b82f6; margin-bottom: 8px;">建議範圍：' + formatDate(v2_min) + ' ~ ' + formatDate(v2_max) + ' (V1 後 1-35 天)</div>';
-                html += '<div style="display: flex; gap: 8px;">';
+                html += '<div class="btn-group">';
                 html += '<button onclick="useV2Date(\'' + formatDate(v2_suggested) + '\')" class="btn btn-primary">最短時間 (' + formatDate(v2_suggested) + ')</button>';
+                if (isHoliday && v2_workday <= v2_max) {
+                    html += '<button onclick="useV2Date(\'' + formatDate(v2_workday) + '\')" class="btn btn-primary">避開假日 (' + formatDate(v2_workday) + ')</button>';
+                }
                 html += '</div>';
                 html += '</div>';
             } else if (type === 'washout') {
@@ -551,14 +1251,25 @@
                 if (drugType) {
                     var washoutDays = parseInt(drugType);
                     var v2_min = addDays(v1, washoutDays + 1);
-                    var v2_max = addDays(v1, washoutDays + 7);
+                    var v2_max = addDays(v1, Math.min(washoutDays + 7, 35)); // Maximum 35 days from V1
                     var v2_suggested = v2_min; // Use minimum (shortest time)
+                    
+                    // Check if suggested date is holiday/weekend
+                    var v2_workday = v2_suggested;
+                    var isHoliday = checkHoliday(v2_suggested);
+                    if (isHoliday) {
+                        v2_workday = getNextWorkday(v2_suggested);
+                    }
                     
                     html = '<div style="margin-top: 12px; padding: 12px; background: #fef3c7; border: 2px solid #fbbf24; border-radius: 8px;">';
                     html += '<div style="font-weight: 600; font-size: 13px; color: #92400e; margin-bottom: 6px;">Visit 2 建議</div>';
-                    html += '<div style="font-size: 12px; color: #92400e; margin-bottom: 8px;">建議範圍：' + formatDate(v2_min) + ' ~ ' + formatDate(v2_max) + ' (V1 後 ' + (washoutDays + 1) + '-' + (washoutDays + 7) + ' 天)</div>';
-                    html += '<div style="display: flex; gap: 8px;">';
+                    html += '<div style="font-size: 12px; color: #92400e; margin-bottom: 8px;">建議範圍：' + formatDate(v2_min) + ' ~ ' + formatDate(v2_max);
+                    html += '<br>（V1 後 ' + (washoutDays + 1) + '-' + Math.min(washoutDays + 7, 35) + ' 天，V1 到 V2 最多 35 天）</div>';
+                    html += '<div class="btn-group">';
                     html += '<button onclick="useV2Date(\'' + formatDate(v2_suggested) + '\')" class="btn btn-primary">最短時間 (' + formatDate(v2_suggested) + ')</button>';
+                    if (isHoliday && v2_workday <= v2_max) {
+                        html += '<button onclick="useV2Date(\'' + formatDate(v2_workday) + '\')" class="btn btn-primary">避開假日 (' + formatDate(v2_workday) + ')</button>';
+                    }
                     html += '</div>';
                     html += '</div>';
                 }
@@ -605,20 +1316,48 @@
             var day = date.getDay();
             var weekdays = ['週日', '週一', '週二', '週三', '週四', '週五', '週六'];
             
-            if (day === 0 || day === 6) {
-                return { type: 'weekend', msg: '⚠️ ' + weekdays[day] + ' (週末)' };
-            }
-            
             var year = String(date.getFullYear());
             var month = String(date.getMonth() + 1).padStart(2, '0');
             var dateStr = String(date.getDate()).padStart(2, '0');
             var key = month + '-' + dateStr;
             
+            // Check if it's a working weekend (補班日)
+            if ((day === 0 || day === 6) && workingWeekends[year] && workingWeekends[year].includes(key)) {
+                return null; // It's a working weekend, not a holiday
+            }
+            
+            // Check if it's a weekend
+            if (day === 0 || day === 6) {
+                return { type: 'weekend', msg: '⚠️ ' + weekdays[day] + ' (週末)' };
+            }
+            
+            // Check if it's a holiday
             if (holidays[year] && holidays[year][key]) {
                 return { type: 'holiday', msg: '⚠️ ' + holidays[year][key] + ' (國定假日)' };
             }
             
             return null;
+        }
+        
+        function getNextWorkday(date) {
+            // Find next workday (not weekend, not holiday)
+            var nextDate = new Date(date);
+            var maxAttempts = 14; // Avoid infinite loop
+            var attempts = 0;
+            
+            while (attempts < maxAttempts) {
+                nextDate = addDays(nextDate, 1);
+                var holidayInfo = checkHoliday(nextDate);
+                
+                if (!holidayInfo) {
+                    // Found a workday
+                    return nextDate;
+                }
+                attempts++;
+            }
+            
+            // If couldn't find workday in 14 days, return original date + 1
+            return addDays(date, 1);
         }
         
         function getHolidayWarningHtml(holidayInfo) {
@@ -678,10 +1417,13 @@
                 var drugType = document.getElementById('drugType').value;
                 var washoutDays = parseInt(drugType);
                 var minDays = washoutDays + 1;  // washout + 1 day to V2
-                var maxDays = washoutDays + 7;  // washout + 7 days to V2
+                var maxDays = Math.min(washoutDays + 7, 35);  // washout + 7 days to V2, but max 35 days total
                 
                 if (daysDiff < minDays) {
                     message = '❌ V1 到 V2 間隔過短（' + daysDiff + ' 天）。需要 ' + minDays + '-' + maxDays + ' 天（' + washoutDays + '天洗除期 + 1-7天到V2）。';
+                    msgClass = 'error';
+                } else if (daysDiff > 35) {
+                    message = '❌ V1 到 V2 間隔過長（' + daysDiff + ' 天）。Washout 受試者 V1 到 V2 最多 35 天。';
                     msgClass = 'error';
                 } else if (daysDiff > maxDays) {
                     message = '❌ V1 到 V2 間隔過長（' + daysDiff + ' 天）。需要 ' + minDays + '-' + maxDays + ' 天。';
@@ -708,6 +1450,17 @@
                         visit1aDate = formatDate(v1);
                     }
                     
+                    // Check if V1 is holiday/weekend
+                    var v1_workday = v1;
+                    var isV1Holiday = checkHoliday(v1);
+                    if (isV1Holiday) {
+                        v1_workday = getNextWorkday(v1);
+                        // Make sure workday is before V2
+                        if (v1_workday >= v2) {
+                            v1_workday = v1;
+                        }
+                    }
+                    
                     html += '<div class="suggestion-box">';
                     html += '<div class="suggestion-label">彈性範圍</div>';
                     html += '<div class="suggestion-value">' + formatDate(v1) + ' ~ ' + formatDate(v2) + '<br>';
@@ -718,6 +1471,9 @@
                     html += '<div id="v1aWarning" style="margin-top: 5px;"></div>';
                     html += '<div class="btn-group">';
                     html += '<button class="btn btn-primary" onclick="useV1ForV1a()">重設為 V1</button>';
+                    if (isV1Holiday && v1_workday < v2) {
+                        html += '<button class="btn btn-primary" onclick="useDate(\'' + formatDate(v1_workday) + '\')">避開假日 (' + formatDate(v1_workday) + ')</button>';
+                    }
                     html += '</div>';
                 } else if (type === 'washout') {
                     // Washout: V1a must be 1-7 days before V2
@@ -736,19 +1492,20 @@
                     else if (washoutDays === 7) drugTypeName = 'Muscarinic agonists / Carbonic anhydrase inhibitors';
                     
                     html += '<div class="suggestion-box">';
-                    html += '<div class="suggestion-label">Washout 計算</div>';
+                    html += '<div class="suggestion-label">Washout 規則</div>';
                     html += '<div class="suggestion-value">';
                     html += '• 藥物類型：' + drugTypeName + '<br>';
-                    html += '• 洗除期：<strong>' + washoutDays + ' 天</strong><br>';
-                    html += '• V1a 必須同時符合：<br>';
-                    html += '  ① V1 + ' + washoutDays + ' 天 = <strong>' + formatDate(v1a_calculated) + '</strong><br>';
-                    html += '  ② V2 前 1-7 天 = <strong>' + formatDate(v1a_early) + ' ~ ' + formatDate(v1a_late) + '</strong><br><br>';
+                    html += '• <strong>最小洗除期：' + washoutDays + ' 天</strong>（可更長）<br>';
+                    html += '• <strong>V1a 最早：</strong>V1 + ' + washoutDays + ' 天 = <strong>' + formatDate(v1a_calculated) + '</strong><br>';
+                    html += '• <strong>V1a 必須：</strong>V2 前 1-7 天 = <strong>' + formatDate(v1a_early) + ' ~ ' + formatDate(v1a_late) + '</strong><br>';
+                    html += '• <strong>可選範圍：</strong>' + formatDate(v1a_calculated) + ' ~ ' + formatDate(v1a_late) + '<br><br>';
                     
                     // Check if calculated V1a is within valid range
                     if (v1a_calculated >= v1a_early && v1a_calculated <= v1a_late) {
-                        html += '✓ <strong>' + formatDate(v1a_calculated) + '</strong> 符合兩個條件';
+                        html += '✓ <strong style="color: #059669;">建議 ' + formatDate(v1a_calculated) + '（洗除期剛好 ' + washoutDays + ' 天）</strong>';
                     } else {
-                        html += '❌ <span style="color: #dc2626;">條件衝突！需要調整 V1 或 V2。</span>';
+                        html += '❌ <strong style="color: #dc2626;">最早可用的 V1a (' + formatDate(v1a_calculated) + ') 不在 V2 前 1-7 天範圍內</strong><br>';
+                        html += '<span style="font-size: 12px; color: #92400e;">建議：調整 V2 到 ' + formatDate(addDays(v1a_calculated, 1)) + ' 或更晚</span>';
                     }
                     html += '</div>';
                     html += '</div>';
@@ -756,12 +1513,25 @@
                     html += '<input type="date" id="v1aInput" value="' + formatDate(v1a_calculated) + '" onchange="visit1aDate=this.value; checkDateWarning(\'v1a\'); validateV1a(); calculateVisits();" style="width: 100%; padding: 10px; margin-top: 10px; border: 2px solid #fbbf24; border-radius: 8px;">';
                     html += '<div id="v1aWarning" style="margin-top: 5px;"></div>';
                     
-                    // Add range suggestion buttons if V1a range is valid
+                    // Only show button if V1a is valid (within V2 -7 to -1 range)
                     if (v1a_calculated >= v1a_early && v1a_calculated <= v1a_late) {
+                        // Check if calculated V1a is holiday/weekend
+                        var v1a_workday = v1a_calculated;
+                        var isV1aHoliday = checkHoliday(v1a_calculated);
+                        if (isV1aHoliday) {
+                            v1a_workday = getNextWorkday(v1a_calculated);
+                            // Make sure workday is still within valid range and meets minimum washout
+                            var workday_washout = getDaysDiff(v1, v1a_workday);
+                            if (v1a_workday > v1a_late || workday_washout < washoutDays) {
+                                isV1aHoliday = null; // Don't show avoid button
+                            }
+                        }
+                        
                         html += '<div class="btn-group">';
-                        html += '<button class="btn btn-primary" onclick="useDate(\'' + formatDate(v1a_early) + '\')">最早 (' + formatDate(v1a_early) + ')</button>';
-                        html += '<button class="btn btn-primary" onclick="useDate(\'' + formatDate(v1a_calculated) + '\')">建議 (' + formatDate(v1a_calculated) + ')</button>';
-                        html += '<button class="btn btn-primary" onclick="useDate(\'' + formatDate(v1a_late) + '\')">最晚 (' + formatDate(v1a_late) + ')</button>';
+                        html += '<button class="btn btn-primary" onclick="useDate(\'' + formatDate(v1a_calculated) + '\')">使用最早日期 (' + formatDate(v1a_calculated) + ')</button>';
+                        if (isV1aHoliday) {
+                            html += '<button class="btn btn-primary" onclick="useDate(\'' + formatDate(v1a_workday) + '\')">避開假日 (' + formatDate(v1a_workday) + ')</button>';
+                        }
                         html += '</div>';
                     }
                     
@@ -854,14 +1624,18 @@
                 if (v1a_v2_diff < 1 || v1a_v2_diff > 7) {
                     msgHtml = '<div class="validation-msg error" style="margin-top: 10px;">❌ V1a 到 V2 間隔不符（' + v1a_v2_diff + ' 天）。Washout 必須是 1-7 天。</div>';
                 } else {
-                    // Check if V1a matches washout period
+                    // Check if V1a meets minimum washout period
                     var drugType = document.getElementById('drugType').value;
                     var washoutDays = parseInt(drugType);
                     
-                    if (v1_v1a_diff !== washoutDays) {
-                        msgHtml = '<div class="validation-msg error" style="margin-top: 10px;">❌ V1 到 V1a 間隔不符（' + v1_v1a_diff + ' 天）。洗除期必須是 ' + washoutDays + ' 天。</div>';
+                    if (v1_v1a_diff < washoutDays) {
+                        msgHtml = '<div class="validation-msg error" style="margin-top: 10px;">❌ V1 到 V1a 間隔不足（' + v1_v1a_diff + ' 天）。最小洗除期是 ' + washoutDays + ' 天。</div>';
                     } else {
-                        msgHtml = '<div class="validation-msg success" style="margin-top: 10px;">✓ V1a 日期符合規定（洗除期 ' + washoutDays + ' 天，V1a到V2 ' + v1a_v2_diff + ' 天）</div>';
+                        if (v1_v1a_diff === washoutDays) {
+                            msgHtml = '<div class="validation-msg success" style="margin-top: 10px;">✓ V1a 符合規定（洗除期 ' + washoutDays + ' 天，V1a到V2 ' + v1a_v2_diff + ' 天）</div>';
+                        } else {
+                            msgHtml = '<div class="validation-msg success" style="margin-top: 10px;">✓ V1a 符合規定（洗除期 ' + v1_v1a_diff + ' 天 ≥ 最小 ' + washoutDays + ' 天，V1a到V2 ' + v1a_v2_diff + ' 天）</div>';
+                        }
                     }
                 }
             }
@@ -890,6 +1664,13 @@
             var v1 = parseDate(v1Input);
             var v2 = parseDate(v2Input);
             var html = '';
+            
+            // Add "Auto-Avoid Holidays" button at top
+            html += '<div style="text-align: center; margin-bottom: 20px; padding: 15px; background: #fef3c7; border-radius: 12px; border: 2px solid #fbbf24;">';
+            html += '<div style="font-weight: 600; color: #92400e; margin-bottom: 8px; font-size: 14px;">🎯 智能排程助手</div>';
+            html += '<button onclick="autoAvoidHolidays()" style="background: #f59e0b; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: all 0.3s;" onmouseover="this.style.background=\'#d97706\'" onmouseout="this.style.background=\'#f59e0b\'">✨ 一鍵避開假日</button>';
+            html += '<div style="font-size: 12px; color: #92400e; margin-top: 8px;">自動調整 Visit 3, 4, 5 到最近的工作日</div>';
+            html += '</div>';
             
             // Visit 1
             var w1 = checkHoliday(v1);
@@ -949,43 +1730,64 @@
             html += getHolidayWarningHtml(wd2);
             html += '</div>';
             
+            // Calculate all visit dates first
+            var v3_center = addDays(v2, 7);
+            var v4_center = addDays(v2, 14);
+            var v5_center = addDays(v2, 28);
+            
+            // Get actual dates (use selected if available, otherwise use center)
+            var v3_date = selectedV3 ? parseDate(selectedV3) : v3_center;
+            var v4_date = selectedV4 ? parseDate(selectedV4) : v4_center;
+            var v5_date = selectedV5 ? parseDate(selectedV5) : v5_center;
+            
+            // Collect all visit dates for conflict detection
+            var allVisits = [
+                { name: 'Visit 1', date: v1Input },
+                { name: 'Visit 1a', date: visit1aDate },
+                { name: 'Visit 2', date: v2Input },
+                { name: 'Day 2', date: formatDate(day2) },
+                { name: 'Visit 3', date: formatDate(v3_date) },
+                { name: 'Visit 4', date: formatDate(v4_date) },
+                { name: 'Visit 5', date: formatDate(v5_date) }
+            ];
+            
             // Visit 3
-            var v3 = addDays(v2, 7);
-            var w3 = checkHoliday(v3);
+            var w3 = checkHoliday(v3_date);
             html += '<div class="visit-card">';
             html += '<div class="visit-header">';
             html += '<div class="visit-name">Visit 3</div>';
             html += '<div class="badge badge-treatment">治療期</div>';
             html += '</div>';
             html += '<div class="visit-info">Study Day: Day 8 (±2)<br>範圍: ' + formatDate(addDays(v2, 5)) + ' ~ ' + formatDate(addDays(v2, 9)) + '</div>';
-            html += '<div class="visit-date">' + formatDate(v3) + '</div>';
+            html += '<div class="visit-date">' + formatDate(v3_date) + '</div>';
             html += getHolidayWarningHtml(w3);
+            html += generateDateSelector(3, v3_center, v2, allVisits);
             html += '</div>';
             
             // Visit 4
-            var v4 = addDays(v2, 14);
-            var w4 = checkHoliday(v4);
+            var w4 = checkHoliday(v4_date);
             html += '<div class="visit-card">';
             html += '<div class="visit-header">';
             html += '<div class="visit-name">Visit 4</div>';
             html += '<div class="badge badge-treatment">治療期</div>';
             html += '</div>';
             html += '<div class="visit-info">Study Day: Day 15 (±2)<br>範圍: ' + formatDate(addDays(v2, 12)) + ' ~ ' + formatDate(addDays(v2, 16)) + '</div>';
-            html += '<div class="visit-date">' + formatDate(v4) + '</div>';
+            html += '<div class="visit-date">' + formatDate(v4_date) + '</div>';
             html += getHolidayWarningHtml(w4);
+            html += generateDateSelector(4, v4_center, v2, allVisits);
             html += '</div>';
             
             // Visit 5
-            var v5 = addDays(v2, 28);
-            var w5 = checkHoliday(v5);
+            var w5 = checkHoliday(v5_date);
             html += '<div class="visit-card">';
             html += '<div class="visit-header">';
             html += '<div class="visit-name">Visit 5</div>';
             html += '<div class="badge badge-treatment">治療期</div>';
             html += '</div>';
             html += '<div class="visit-info">Study Day: Day 29 (±2) EOT<br>範圍: ' + formatDate(addDays(v2, 26)) + ' ~ ' + formatDate(addDays(v2, 30)) + '</div>';
-            html += '<div class="visit-date">' + formatDate(v5) + '</div>';
+            html += '<div class="visit-date">' + formatDate(v5_date) + '</div>';
             html += getHolidayWarningHtml(w5);
+            html += generateDateSelector(5, v5_center, v2, allVisits);
             html += '</div>';
             
             // Visit 6
