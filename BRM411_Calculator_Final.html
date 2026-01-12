@@ -5167,7 +5167,7 @@
                 
                 // 日期網格
                 var daysGrid = document.createElement('div');
-                daysGrid.style.cssText = 'display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px;';
+                daysGrid.style.cssText = 'display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px;';
                 
                 // 計算該月第一天是星期幾
                 var firstDay = new Date(displayDate.getFullYear(), displayDate.getMonth(), 1);
@@ -5241,12 +5241,13 @@
                         dayBtn.title = disableReason;
                     } else {
                         // 可選日期
-                        var bgColor = isSelected ? '#0b6ac9' : (isToday ? '#e0e7ff' : 'white');
-                        var textColor = isSelected ? 'white' : (isToday ? '#4338ca' : '#1e40af');
+                        var bgColor = isSelected ? '#0b6ac9' : (isToday ? '#dbeafe' : 'white');
+                        var textColor = isSelected ? 'white' : (isToday ? '#1e40af' : '#1e40af');
                         var border = isToday && !isSelected ? '3px solid #0b6ac9' : (isSelected ? '2px solid #0b6ac9' : '1px solid #e5e7eb');
                         var fontWeight = isToday ? '700' : '600';
+                        var boxShadow = isToday && !isSelected ? '0 0 0 3px rgba(11, 106, 201, 0.2)' : 'none';
                         
-                        dayBtn.style.cssText = 'height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 15px; font-weight: ' + fontWeight + '; color: ' + textColor + '; background: ' + bgColor + '; border: ' + border + '; cursor: pointer !important; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); user-select: none; pointer-events: auto !important;';
+                        dayBtn.style.cssText = 'height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 6px; font-size: 15px; font-weight: ' + fontWeight + '; color: ' + textColor + '; background: ' + bgColor + '; border: ' + border + '; box-shadow: ' + boxShadow + '; cursor: pointer !important; transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1); user-select: none; pointer-events: auto !important;';
                         dayBtn.title = isToday ? '今天 - 點擊選擇' : '點擊選擇此日期';
                         
                         dayBtn.onmouseover = function() {
