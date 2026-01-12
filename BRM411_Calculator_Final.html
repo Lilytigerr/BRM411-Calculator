@@ -5021,15 +5021,9 @@
             if (input.value && input.value.trim() !== '') {
                 console.log('📝 輸入框有值:', input.value);
                 currentDate = parseDate(input.value);
-                
-                // 如果是Visit 1且當前值是過去的日期，強制使用今天
-                if (inputId === 'visit1' && currentDate < today) {
-                    console.log('⚠️ V1過去日期，改用今天');
-                    currentDate = new Date(today);
-                }
             } else {
                 console.log('📝 輸入框無值，使用今天');
-                // 沒有值時，強制使用今天
+                // 沒有值時，使用今天
                 currentDate = new Date(today);
             }
             
@@ -5200,13 +5194,13 @@
                         isWorkingWeekend = workingWeekends[year] && workingWeekends[year].indexOf(monthDay) !== -1;
                     }
                     
-                    // 檢查是否為過去日期（只針對Visit 1）
+                    // 檢查是否為過去日期（只針對Visit 2, Visit 6等，Visit 1可以選過去）
                     var today = new Date();
                     today.setHours(0, 0, 0, 0);
                     var todayStr = formatDate(today);  // 使用同一個today變量
                     
                     var isPastDate = false;
-                    if (inputId === 'visit1') {
+                    if (inputId !== 'visit1') {
                         isPastDate = (date < today);
                     }
                     
