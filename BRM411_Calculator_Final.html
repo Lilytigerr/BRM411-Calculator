@@ -2902,13 +2902,16 @@
             else if (visitNum === 4) selectedDate = selectedV4;
             else if (visitNum === 5) selectedDate = selectedV5;
             
-            // Validate that selectedDate is reasonable (within ±14 days is acceptable)
+            // Validate that selectedDate is reasonable
             if (selectedDate) {
                 var selectedDateObj = parseDate(selectedDate);
                 var daysDiff = getDaysDiff(centerDate, selectedDateObj);
                 
-                // If selected date is way outside range (±14 days), clear it
-                if (Math.abs(daysDiff) > 14) {
+                // V3, V4, V5 use ±2 days, V2 uses ±14 days
+                var maxDiff = (visitNum === 3 || visitNum === 4 || visitNum === 5) ? 2 : 14;
+                
+                // If selected date is way outside range, clear it
+                if (Math.abs(daysDiff) > maxDiff) {
                     console.log('⚠️ ' + visitName + ' 選擇的日期 ' + selectedDate + ' 超出合理範圍，清除並重新計算');
                     selectedDate = null;
                     if (visitNum === 2) selectedV2 = null;
@@ -2918,16 +2921,19 @@
                 }
             }
             
-            // If no selection, use center date (or nearest workday within ±7 days)
+            // If no selection, use center date (or nearest workday within window)
             if (!selectedDate) {
                 var suggestedDate = centerDate;
                 
-                // If center date is holiday, find nearest workday WITHIN ±7 days
+                // V3, V4, V5 use ±2 days, V2 uses ±7 days
+                var windowSize = (visitNum === 3 || visitNum === 4 || visitNum === 5) ? 2 : 7;
+                
+                // If center date is holiday, find nearest workday WITHIN window
                 if (checkHoliday(centerDate)) {
                     var foundWorkday = null;
                     
-                    // Search within ±7 days window
-                    for (var offset = 1; offset <= 7; offset++) {
+                    // Search within window
+                    for (var offset = 1; offset <= windowSize; offset++) {
                         // Try forward first
                         var forwardDate = addDays(centerDate, offset);
                         if (!checkHoliday(forwardDate)) {
@@ -2947,7 +2953,7 @@
                     if (foundWorkday) {
                         suggestedDate = foundWorkday;
                     }
-                    // If no workday found in ±7 window, keep centerDate
+                    // If no workday found in window, keep centerDate
                 }
                 
                 selectedDate = formatDate(suggestedDate);
@@ -6193,9 +6199,9 @@
             ];
             
             // Visit 3
-            // Ensure v3_date is within ±7 days of center (V2+0 to V2+14)
-            var v3_range_start = addDays(v2, 0);
-            var v3_range_end = addDays(v2, 14);
+            // Ensure v3_date is within ±2 days of center (V2+5 to V2+9, i.e., Day 6-10)
+            var v3_range_start = addDays(v2, 5);
+            var v3_range_end = addDays(v2, 9);
             if (v3_date < v3_range_start || v3_date > v3_range_end) {
                 console.log('⚠️ Visit 3 日期超出範圍，使用中心日:', formatDate(v3_date), '→', formatDate(v3_center));
                 v3_date = v3_center;
@@ -6210,7 +6216,7 @@
             html += '<div class="visit-name">Visit 3' + (v3Updated ? ' <span style="color: #5b9dd9; font-weight: 700;">✓ 已重新計算</span>' : '') + '</div>';
             html += '<div class="badge badge-treatment">治療期</div>';
             html += '</div>';
-            html += '<div class="visit-info">Study Day: Day 8 (±7天)<br>可選範圍: ' + formatDateWithWeekday(addDays(v2, 1)) + ' ~ ' + formatDateWithWeekday(addDays(v2, 14)) + '</div>';
+            html += '<div class="visit-info">Study Day: Day 8 (±2天)<br>可選範圍: ' + formatDateWithWeekday(addDays(v2, 5)) + ' ~ ' + formatDateWithWeekday(addDays(v2, 9)) + '</div>';
             console.log('🎨 即將顯示V3日期:', formatDateWithWeekday(v3_date), '原始值:', v3_date);
             html += '<div class="visit-date">' + formatDateWithWeekday(v3_date) + '</div>';
             html += getHolidayWarningHtml(w3);
@@ -6221,9 +6227,9 @@
             html += '</div>';
             
             // Visit 4
-            // Ensure v4_date is within ±7 days of center (V2+7 to V2+21)
-            var v4_range_start = addDays(v2, 7);
-            var v4_range_end = addDays(v2, 21);
+            // Ensure v4_date is within ±2 days of center (V2+12 to V2+16, i.e., Day 13-17)
+            var v4_range_start = addDays(v2, 12);
+            var v4_range_end = addDays(v2, 16);
             if (v4_date < v4_range_start || v4_date > v4_range_end) {
                 console.log('⚠️ Visit 4 日期超出範圍，使用中心日:', formatDate(v4_date), '→', formatDate(v4_center));
                 v4_date = v4_center;
@@ -6238,7 +6244,7 @@
             html += '<div class="visit-name">Visit 4' + (v4Updated ? ' <span style="color: #5b9dd9; font-weight: 700;">✓ 已重新計算</span>' : '') + '</div>';
             html += '<div class="badge badge-treatment">治療期</div>';
             html += '</div>';
-            html += '<div class="visit-info">Study Day: Day 15 (±7天)<br>可選範圍: ' + formatDateWithWeekday(addDays(v2, 7)) + ' ~ ' + formatDateWithWeekday(addDays(v2, 21)) + '</div>';
+            html += '<div class="visit-info">Study Day: Day 15 (±2天)<br>可選範圍: ' + formatDateWithWeekday(addDays(v2, 12)) + ' ~ ' + formatDateWithWeekday(addDays(v2, 16)) + '</div>';
             html += '<div class="visit-date">' + formatDateWithWeekday(v4_date) + '</div>';
             html += getHolidayWarningHtml(w4);
             if (v4Updated) {
@@ -6248,9 +6254,9 @@
             html += '</div>';
             
             // Visit 5
-            // Ensure v5_date is within ±7 days of center (V2+21 to V2+35)
-            var v5_range_start = addDays(v2, 21);
-            var v5_range_end = addDays(v2, 35);
+            // Ensure v5_date is within ±2 days of center (V2+26 to V2+30, i.e., Day 27-31)
+            var v5_range_start = addDays(v2, 26);
+            var v5_range_end = addDays(v2, 30);
             if (v5_date < v5_range_start || v5_date > v5_range_end) {
                 console.log('⚠️ Visit 5 日期超出範圍，使用中心日:', formatDate(v5_date), '→', formatDate(v5_center));
                 v5_date = v5_center;
